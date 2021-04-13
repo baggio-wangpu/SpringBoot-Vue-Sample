@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.Users;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,10 +29,10 @@ public class UserController {
 //        service.add(dto);
 //    }
 //
-//    @GetMapping("/{id}")
-//    public User getById(@PathVariable(required = true) long id) {
-//        return service.getUserById(id);
-//    }
+    @GetMapping("/{id}")
+    public Users getById(@PathVariable long id) {
+        return service.getUserById(id);
+    }
 //
 //    @DeleteMapping("/{id}")
 //    public void delete(@PathVariable(required = true) long id) {
