@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import com.example.demo.models.ERole;
+import com.example.demo.entity.models.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

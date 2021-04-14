@@ -24,7 +24,7 @@ public class AuthController {
     @PostMapping("/signin")
     //用户登录
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-        return authService.authenticateUser(loginRequest);
+        return ResponseEntity.ok(authService.authenticateUser(loginRequest));
     }
 
     @PostMapping("/signup")

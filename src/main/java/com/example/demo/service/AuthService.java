@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
-import com.example.demo.models.ERole;
+import com.example.demo.entity.models.ERole;
 import com.example.demo.payload.request.LoginRequest;
 import com.example.demo.payload.request.SignupRequest;
 import com.example.demo.payload.response.JwtResponse;
@@ -48,7 +48,7 @@ public class AuthService {
         this.jwtUtils = jwtUtils;
     }
 
-    public ResponseEntity<?> authenticateUser(LoginRequest loginRequest) {
+    public JwtResponse authenticateUser(LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -60,11 +60,14 @@ public class AuthService {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail(),
-                roles));
+        return JwtResponse.builder()
+                .token(jwt)
+                .id(userDetails.getId())
+                .username(userDetails.getUsername())
+                .email(userDetails.getEmail())
+                .roles(roles)
+                .build();
+
     }
 
     public ResponseEntity<?> registerUser(SignupRequest signUpRequest) {
