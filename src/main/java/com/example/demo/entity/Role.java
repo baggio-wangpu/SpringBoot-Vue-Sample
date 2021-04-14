@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.example.demo.models.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,17 +11,14 @@ import javax.persistence.*;
 @Data
 @Builder
 @Entity
+@Table(name = "roles")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String usrname;
-
-    @Convert(converter = MD5Converter.class)
-    private String pwd;
-
-    private int status;
+    @Enumerated(EnumType.STRING)
+    private ERole name;
 }
