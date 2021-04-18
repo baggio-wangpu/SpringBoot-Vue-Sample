@@ -40,6 +40,7 @@ public class User {
     @Size(max = 255)
     private String password;
 
+    @Builder.Default
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

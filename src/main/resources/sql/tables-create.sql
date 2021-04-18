@@ -28,3 +28,13 @@ CREATE TABLE `user_roles` (
                          `role_id` bigint(20),
                          PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `tutorials`;
+create table `tutorials`
+(
+    id          bigint       not null auto_increment
+        primary key,
+    description varchar(255) null,
+    published   bit          null,
+    title       varchar(255) null
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
