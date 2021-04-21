@@ -9,10 +9,12 @@
           </router-link>
         </li>
         <li v-if="showAdminBoard" class="nav-item">
-          <router-link to="/admin" class="nav-link">Admin Board</router-link>
+          <router-link to="/tutorials" class="nav-link">Tutorials</router-link>
+          <router-link to="/tutorials/add" class="nav-link">Add</router-link>
         </li>
         <li v-if="showModeratorBoard" class="nav-item">
-          <router-link to="/mod" class="nav-link">Moderator Board</router-link>
+          <router-link to="/tutorials" class="nav-link">Tutorials</router-link>
+          <router-link to="/tutorials/add" class="nav-link">Add</router-link>
         </li>
         <li class="nav-item">
           <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>

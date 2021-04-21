@@ -27,6 +27,21 @@ export const router = new Router({
       component: Register
     },
     {
+      path: '/tutorials',
+      name: "tutorial-list",
+      component: () => import('../components/TutorialsList')
+    },
+    {
+      path: "/tutorials/:id",
+      name: "tutorial-detail",
+      component: () => import("../components/Tutorial")
+    },
+    {
+      path: "/tutorials/add",
+      name: "tutorial-add",
+      component: () => import("../components/AddTutorial")
+    },
+    {
       path: '/profile',
       name: 'profile',
       // lazy-loaded
