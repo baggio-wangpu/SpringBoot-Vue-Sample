@@ -25,59 +25,59 @@
       </div>
 
       <button @click="saveTutorial" class="btn btn-success">Submit</button>
-  </div>
+    </div>
 
-  <div v-else>
-    <h4>You submitted successfully!</h4>
-    <button class="btn btn-success" @click="newTutorial">Add</button>
-</div>
-</div>
+    <div v-else>
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" @click="newTutorial">Add</button>
+    </div>
+  </div>
 </template>
 
 <script>
-import TutorialDataService from "../services/TutorialDataService";
+import TutorialService from "../services/tutorial.service";
 
 export default {
   name: "add-tutorial",
   data() {
-  return {
-  tutorial: {
-  id: null,
-  title: "",
-  description: "",
-  published: false
-},
-  submitted: false
-};
-},
+    return {
+      tutorial: {
+        id: null,
+        title: "",
+        description: "",
+        published: false
+      },
+      submitted: false
+    };
+  },
   methods: {
-  saveTutorial() {
-  var data = {
-  title: this.tutorial.title,
-  description: this.tutorial.description
-};
+    saveTutorial() {
+      var data = {
+        title: this.tutorial.title,
+        description: this.tutorial.description
+      };
 
-  TutorialDataService.create(data)
-  .then(response => {
-  this.tutorial.id = response.data.id;
-  console.log(response.data);
-  this.submitted = true;
-})
-  .catch(e => {
-  console.log(e);
-});
-},
+      TutorialService.create(data)
+        .then(response => {
+          this.tutorial.id = response.data.id;
+          console.log(response.data);
+          this.submitted = true;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
 
-  newTutorial() {
-  this.submitted = false;
-  this.tutorial = {};
-}
-}
+    newTutorial() {
+      this.submitted = false;
+      this.tutorial = {};
+    }
+  }
 };
 </script>
 
 <style>
-  .submit-form {
+.submit-form {
   max-width: 300px;
   margin: auto;
 }

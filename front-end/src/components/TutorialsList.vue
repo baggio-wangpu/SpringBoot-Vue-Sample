@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import TutorialDataService from "../services/TutorialDataService";
+import TutorialService from "../services/tutorial.service";
 
 export default {
   name: "tutorials-list",
@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     retrieveTutorials() {
-      TutorialDataService.getAll()
+      TutorialService.getAll()
         .then(response => {
           this.tutorials = response.data;
           console.log(response.data);
@@ -94,7 +94,7 @@ export default {
     },
 
     removeAllTutorials() {
-      TutorialDataService.deleteAll()
+      TutorialService.deleteAll()
         .then(response => {
           console.log(response.data);
           this.refreshList();
@@ -105,7 +105,7 @@ export default {
     },
 
     searchTitle() {
-      TutorialDataService.findByTitle(this.title)
+      TutorialService.findByTitle(this.title)
         .then(response => {
           this.tutorials = response.data;
           console.log(response.data);

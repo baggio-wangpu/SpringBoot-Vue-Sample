@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import TutorialDataService from "../services/TutorialDataService";
+import TutorialService from "../services/tutorial.service";
 
 export default {
   name: "tutorial",
@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     getTutorial(id) {
-      TutorialDataService.get(id)
+      TutorialService.get(id)
         .then(response => {
           this.currentTutorial = response.data;
           console.log(response.data);
@@ -84,7 +84,7 @@ export default {
         published: status
       };
 
-      TutorialDataService.update(this.currentTutorial.id, data)
+      TutorialService.update(this.currentTutorial.id, data)
         .then(response => {
           this.currentTutorial.published = status;
           console.log(response.data);
@@ -95,7 +95,7 @@ export default {
     },
 
     updateTutorial() {
-      TutorialDataService.update(this.currentTutorial.id, this.currentTutorial)
+      TutorialService.update(this.currentTutorial.id, this.currentTutorial)
         .then(response => {
           console.log(response.data);
           this.message = 'The tutorial was updated successfully!';
@@ -106,7 +106,7 @@ export default {
     },
 
     deleteTutorial() {
-      TutorialDataService.delete(this.currentTutorial.id)
+      TutorialService.delete(this.currentTutorial.id)
         .then(response => {
           console.log(response.data);
           this.$router.push({ name: "tutorials" });

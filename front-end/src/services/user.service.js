@@ -1,23 +1,23 @@
-import axios from 'axios';
-import authHeader from './auth-header';
+import http from "../http-common";
+import authHeader from "./auth-header";
 
-const API_URL = 'http://localhost:8080/api/test/';
+const DOMAIN_URL = '/api/test/';
 
 class UserService {
   getPublicContent() {
-    return axios.get(API_URL + 'all');
+    return http.get(DOMAIN_URL + 'all');
   }
 
   getUserBoard() {
-    return axios.get(API_URL + 'user', { headers: authHeader() });
+    return http.get(DOMAIN_URL + 'user', { headers: authHeader() });
   }
 
   getModeratorBoard() {
-    return axios.get(API_URL + 'mod', { headers: authHeader() });
+    return http.get(DOMAIN_URL + 'mod', { headers: authHeader() });
   }
 
   getAdminBoard() {
-    return axios.get(API_URL + 'admin', { headers: authHeader() });
+    return http.get(DOMAIN_URL + 'admin', { headers: authHeader() });
   }
 }
 
