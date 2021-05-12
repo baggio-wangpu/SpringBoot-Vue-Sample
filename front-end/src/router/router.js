@@ -37,8 +37,8 @@ export const router = new Router({
       component: () => import("../components/Tutorial")
     },
     {
-      path: "/tutorials/add",
-      name: "tutorial-add",
+      path: "/add",
+      name: "add",
       component: () => import("../components/AddTutorial")
     },
     {
